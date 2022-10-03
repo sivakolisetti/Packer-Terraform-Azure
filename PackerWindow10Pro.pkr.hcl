@@ -45,7 +45,10 @@ source "azure-arm" "win10"{
 build {
       #type = "azure-arm"
       source "azure-arm.win10" {}
-      
+     
+    provisioner "powershell" {
+      script = "windows-install-script.ps1"
+    } 
     provisioner "powershell" {
 
       inline = [
