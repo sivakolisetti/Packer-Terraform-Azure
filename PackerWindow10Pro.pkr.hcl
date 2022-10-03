@@ -26,7 +26,7 @@
 
     }
 
-    provisioner "powershell"{
+    provisioner "powershell" {
       inline = [
         "Add-WindowsFeature Web-Server",
         "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
