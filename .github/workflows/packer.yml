@@ -6,34 +6,6 @@ on:
 name: AzureCLISample
 
 jobs:
-
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.30.0
-        inlineScript: |
-            #Create Shared Image Gallery
-                $re
-                az sig create --resource-group myPackergroup --gallery-name winhub
-                
-                #Create Image definition for the above Shared Image Gallery
-                az sig image-definition create \
-                --resource-group myPackergroup \
-                --gallery-name winhub \
-                --gallery-image-definition shared_windows10 \
-                --publisher MicrosoftWindowsDesktop \
-                --offer Windows-10 \
-                --sku win10-21h2-pro \
-                --os-type Windows
   packer:
     runs-on: ubuntu-latest
     name: packer
