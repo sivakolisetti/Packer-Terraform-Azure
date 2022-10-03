@@ -1,4 +1,3 @@
-{
     "builders": [{
       "type" = "azure-arm",
       "client_id" = "9799262d-6ef6-426c-bbec-1899f09d8207",
@@ -38,4 +37,3 @@
         "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
       ]
     }
-}
