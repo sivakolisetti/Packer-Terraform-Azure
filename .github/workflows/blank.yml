@@ -22,17 +22,18 @@ jobs:
         azcliversion: 2.30.0
         inlineScript: |
             #Create Shared Image Gallery
+                $re
                 az sig create --resource-group $(resource-group) --gallery-name $(gallery-name)
                 
                 #Create Image definition for the above Shared Image Gallery
                 az sig image-definition create \
-                --resource-group $(resource-group) \
-                --gallery-name $(gallery-name) \
-                --gallery-image-definition $(gallery-image-definition) \
-                --publisher $(publisher) \
-                --offer $(offer) \
-                --sku $(sku) \
-                --os-type Windpow
+                --resource-group myPackergroup \
+                --gallery-name winhub \
+                --gallery-image-definition shared_windows10 \
+                --publisher MicrosoftWindowsDesktop \
+                --offer Windows-10 \
+                --sku win10-21h2-pro \
+                --os-type Windows
   packer:
     runs-on: ubuntu-latest
     name: packer
@@ -62,9 +63,9 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: packer.pkr.hcl
+          target: PackerWindow10Pro.json
           # working_directory: infrastructure/packer
         env:
           PACKER_LOG: 1
-          HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
-          HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
+          HCP_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+          HCP_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SCERET }}
