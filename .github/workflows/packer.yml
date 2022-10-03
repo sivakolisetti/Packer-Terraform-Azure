@@ -54,7 +54,8 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: PackerWindow10Pro.json
+          target: PackerWindow10Pro.pkr.hcl
+
 
 
       # build artifact
@@ -63,7 +64,7 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: PackerWindow10Pro.json
+          target: PackerWindow10Pro.pkr.hcl
           working_directory: '.'
         env:
           PACKER_LOG: 1
