@@ -22,6 +22,24 @@ source "azure-arm" "win10"{
       location = "westeurope"
       vm_size = "Standard_DS2_v2"
       managed_image_storage_account_type = "Standard_LRS"
+      
+      shared_image_gallery_destination {
+        gallery_name = "winhub"
+        image_name = "shared_windows10"
+        image_version = "19044.1826.220706"
+        replication_regions = ["westeurope"]
+        resource_group = "myPackergroup"
+        storage_account_type = "Standard_LRS"
+      }
+      azure_tags = {
+          application = "ECAD"
+          costcode    = "COST"
+          department  = "Test"
+          managed_by  = "packer"
+          os          = "Windows10Pro"
+          owner       = "Siva"
+          platform    = "Windows"
+        }
 
 }
 build {
