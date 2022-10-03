@@ -23,7 +23,7 @@ jobs:
         inlineScript: |
             #Create Shared Image Gallery
                 $re
-                az sig create --resource-group $(resource-group) --gallery-name $(gallery-name)
+                az sig create --resource-group myPackergroup --gallery-name winhub
                 
                 #Create Image definition for the above Shared Image Gallery
                 az sig image-definition create \
@@ -43,10 +43,10 @@ jobs:
         uses: actions/checkout@v2
 
       # fix backwards incompatibilities in template
-      - name: Fix Template
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: fix
+      #- name: Fix Template
+       # uses: hashicorp/packer-github-actions@master
+        #with:
+         # command: fix
 
       # validate templates
       - name: Validate Template
@@ -64,7 +64,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: PackerWindow10Pro.json
-          # working_directory: infrastructure/packer
+          working_directory: '.'
         env:
           PACKER_LOG: 1
           HCP_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
