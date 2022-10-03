@@ -1,9 +1,9 @@
 {
     "builders": [{
       "type" = "azure-arm",
-      "client_id" = ${{ secrets.AZURE_AD_CLIENT_ID }},
-      "client_secret" = ${{ secrets.AZURE_AD_CLIENT_SCERET }},
-      "subscription_id" = ${{ secrets.AZURE_SUBSCRIPTION_ID }},
+      "client_id" = "9799262d-6ef6-426c-bbec-1899f09d8207",
+      "client_secret" = "l558Q~TQFkcReZ9AVAbmElS9Qzseenz25f_TnbcR",
+      "subscription_id" = "f7e798a6-8fd2-4799-8302-cbffa03bb9a7",
       "managed_image_resource_group_name" = "myPackergroup",
       "managed_image_name" = "myPackerImagepro",
   
