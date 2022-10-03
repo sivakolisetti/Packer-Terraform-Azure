@@ -1,4 +1,4 @@
-    "builders": [{
+    build {
       "type" = "azure-arm",
       "client_id" = "9799262d-6ef6-426c-bbec-1899f09d8207",
       "client_secret" = "l558Q~TQFkcReZ9AVAbmElS9Qzseenz25f_TnbcR",
@@ -28,7 +28,7 @@
       "vm_size" = "Standard_DS2_v2",
       "managed_image_storage_account_type" = "Standard_LRS"
 
-    }],
+    }
 
     provisioner "powershell"{
       inline = [
